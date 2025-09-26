@@ -1,11 +1,76 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from 'react';
+import PresentationNavigation from '@/components/PresentationNavigation';
+import TitleSlide from '@/components/slides/TitleSlide';
+import ProblemSlide from '@/components/slides/ProblemSlide';
+import SolutionSlide from '@/components/slides/SolutionSlide';
+import TechnologySlide from '@/components/slides/TechnologySlide';
+import MarketSlide from '@/components/slides/MarketSlide';
+import ImpactSlide from '@/components/slides/ImpactSlide';
+
+const slides = [
+  TitleSlide,
+  ProblemSlide,
+  SolutionSlide,
+  TechnologySlide,
+  MarketSlide,
+  ImpactSlide,
+];
 
 const Index = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowRight' || event.key === ' ') {
+        handleNext();
+      } else if (event.key === 'ArrowLeft') {
+        handlePrevious();
+      } else if (event.key === 'Home') {
+        setCurrentSlide(0);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [currentSlide]);
+
+  const handleNext = () => {
+    if (currentSlide < slides.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+    }
+  };
+
+  const handleNavigate = (slideIndex: number) => {
+    setCurrentSlide(slideIndex);
+  };
+
+  const CurrentSlideComponent = slides[currentSlide];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Slide Content */}
+      <CurrentSlideComponent />
+      
+      {/* Navigation */}
+      <PresentationNavigation
+        currentSlide={currentSlide}
+        totalSlides={slides.length}
+        onNavigate={handleNavigate}
+        onPrevious={handlePrevious}
+        onNext={handleNext}
+      />
+      
+      {/* Keyboard Shortcuts Info */}
+      <div className="fixed top-4 right-4 text-xs text-muted-foreground bg-card/80 backdrop-blur-lg border border-border/50 rounded-lg px-3 py-2">
+        <div>← → Arrow keys or Space to navigate</div>
+        <div>Home key to return to start</div>
       </div>
     </div>
   );
