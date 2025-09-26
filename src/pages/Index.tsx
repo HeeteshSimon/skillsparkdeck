@@ -68,7 +68,7 @@ const Index = () => {
       />
       
       {/* Keyboard Shortcuts Info */}
-      <div className="fixed top-4 right-4 text-xs text-muted-foreground bg-card/80 backdrop-blur-lg border border-border/50 rounded-lg px-3 py-2">
+      <div className="fixed top-4 right-4 text-xs text-muted-foreground bg-card/20 hover:bg-card/80 backdrop-blur-sm hover:backdrop-blur-lg border border-border/10 hover:border-border/50 rounded-lg px-2 py-1 hover:px-3 hover:py-2 opacity-20 hover:opacity-100 transition-all duration-300">
         <div>← → Arrow keys or Space to navigate</div>
         <div>Home key to return to start</div>
       </div>
