@@ -36,7 +36,9 @@ const TitleSlide = () => {
           powered by AI, integrated seamlessly into daily workflows
         </p>
 
-        {/* CTA Section */}
+        {/* CTA Section - COMMENTED OUT */}
+        {/* Uncomment the section below to enable the action buttons on the title slide */}
+        {/*
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
           <Button size="lg" className="bg-white text-background hover:bg-white/90 px-8 py-6 text-lg font-semibold">
             Start Presentation
@@ -45,6 +47,7 @@ const TitleSlide = () => {
             Live Demo
           </Button>
         </div>
+        */}
 
         {/* Key Stats Preview */}
         <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
