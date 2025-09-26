@@ -17,8 +17,8 @@ const PresentationNavigation = ({
   onNext 
 }: PresentationNavigationProps) => {
   return (
-    <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-      <div className="flex items-center gap-4 bg-card/80 backdrop-blur-lg border border-border/50 rounded-full px-6 py-3 shadow-lg">
+    <div className="fixed bottom-3 left-1/2 transform -translate-x-1/2 z-40">
+      <div className="flex items-center gap-3 bg-card/60 backdrop-blur-lg border border-border/30 rounded-full px-4 py-2 shadow-lg">
         <Button
           variant="ghost"
           size="sm"
